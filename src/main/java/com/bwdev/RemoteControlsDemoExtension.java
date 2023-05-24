@@ -18,10 +18,11 @@ public class RemoteControlsDemoExtension extends ControllerExtension
    {
       final ControllerHost host = getHost();
 
+      final var trackBank = host.createTrackBank(NUM_TRACKS, 8, 8, false);
+
       for (int t = 0; t < NUM_TRACKS; ++t)
       {
-         final var trackName = "Track" + t;
-         final var track = host.createCursorTrack(trackName, trackName, 8, 8, false);
+         final var track = trackBank.getItemAt(t);
 
          final var trackPageName = "TrackPage" + t;
          final var trackPage = track.createCursorRemoteControlsPage(trackPageName, 8, null);
